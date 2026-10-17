@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: weather-data-cli
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /health
+    envVars:
+      - key: OPENWEATHER_API_KEY
+        sync: false
